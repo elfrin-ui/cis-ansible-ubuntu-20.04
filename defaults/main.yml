@@ -147,7 +147,7 @@ deny_users: None
 deny_groups: None
 max_auth_tries: 4
 ## 5.2.21 Ensure SSH MaxStartups is configured
-ssh_max_startups: "10:30:100"
+ssh_max_startups: "10:30:60"
 ## 5.2.22 Ensure SSH MaxSessions is limited
 ssh_max_sessions: 10
 ## 5.3.10 Allow root logins for a certain list of IPs (default: no root login allowed), e.g. "192.168.10.10,192.168.1.0/24"
@@ -157,8 +157,8 @@ pass_expire_in_days: 300
 pass_warn_age: 7
 pass_min_days: 1
 ## 5.4.1.1 Ensure password expiration is 365 days or less
-list_of_os_users:
-  - ubuntu
+##Note: More than 1 user separate by space
+list_of_os_users: ubuntu
 ## 5.4.1.4 Ensure inactive password lock is 30 days or less
 ##Note: A value of -1 would disable this setting
 account_inactive: 30
