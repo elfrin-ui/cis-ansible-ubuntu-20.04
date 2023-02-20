@@ -345,7 +345,7 @@
 # 2.1.16 Ensure rsync service is not installed
 # The rsync service can be used to synchronize files between systems over network links.
 - name: 2.1.16 Ensure rsync service is not installed
-  ansible.builtin.apt:
+  apt:
     name: rsync
     state: absent
     purge: true
