@@ -1,35 +1,7 @@
 ---
 # 2 Services
-# 2.1 inetd Services
-# 2.1.1 Ensure xinetd is not installed
-# The eXtended InterNET Daemon ( xinetd ) is an open source super daemon that replaced
-# the original inetd daemon. The xinetd daemon listens for well known services and
-# dispatches the appropriate daemon to properly respond to service requests.
-- name: 2.1.1 Ensure xinetd is not installed
-  apt:
-    name: xinetd
-    state: absent
-  when: remove_xinetd
-  tags:
-    - section2
-    - level_1_server
-    - level_1_workstation
-    - 2.1.1
-# 2.1.2 Ensure openbsd-inetd is not installed
-# The inetd daemon listens for well known services and dispatches the appropriate daemon
-# to properly respond to service requests.
-- name: 2.1.2 Ensure openbsd-inetd is not installed
-  apt:
-    name: openbsd-inetd
-    state: absent
-  when: remove_openbsd_inetd
-  tags:
-    - section2
-    - level_1_server
-    - level_1_workstation
-    - 2.1.2
-# 2.2 Special Purpose Services
-# 2.2.1 Time Synchronization
+# 2.1 Special Purpose Services
+# 2.1.1 Time Synchronization
 # If access to a physical host's clock is available and configured according to site policy,
 # this section can be skipped
 # Only one time synchronization method should be in use on the system

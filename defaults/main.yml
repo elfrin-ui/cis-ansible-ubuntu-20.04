@@ -20,7 +20,7 @@ bootloader_credentials: { user: "root", password: "b00tl04derPwd" }
 # 1.4.4 Ensure authentication required for single user mode
 set_root_password: yes
 root_password: r00tP4ssw0rd
-## 1.6.1.1 AppArmor by El
+## 1.6.1.1 AppArmor
 install_apparmor: yes
 ## 1.7.1 Ensure permissions on /etc/motd are configured: allow for custom motd template (if the file doesn't exist, the
 ## default template in files/templates/motd.j2 will be used)
