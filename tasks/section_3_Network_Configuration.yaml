@@ -618,18 +618,6 @@
         port: "{{ item.port }}"
         proto: "{{ item.proto }}"
       with_items: "{{ firewall_list_of_ports_to_allow }}"
-    - name: 3.5.1.6 Ensure ufw firewall rules exist for all open ports | keep_alived (1)
-      ufw:
-        # note: Ansible doesn't support "proto: vrrp"
-        rule: allow
-        from_ip: 224.0.0.18
-      when: firewall_allow_keep_alive
-    - name: 3.5.1.6 Ensure ufw firewall rules exist for all open ports | keep_alived (2)
-      ufw:
-        # note: Ansible doesn't support "proto: vrrp"
-        rule: allow
-        to_ip: 224.0.0.18
-      when: firewall_allow_keep_alive
   when: enable_firewall
   tags:
     - section3
@@ -647,7 +635,7 @@
     - name: 3.5.1.7 Ensure ufw default deny firewall policy
       shell: |
         ufw default deny incoming
-        ufw default allow outgoing
+        ufw default deny outgoing
         ufw default deny routed
         ufw logging on
     - name: Enable UFW
