@@ -423,6 +423,7 @@
   apt:
     name: telnet
     state: absent
+    purge: true
   when: remove_telnetclient
   tags:
     - section2
