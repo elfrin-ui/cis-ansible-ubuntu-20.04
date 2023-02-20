@@ -695,7 +695,7 @@
       command: "useradd -D -f {{ account_inactive }}"
     - name: 5.5.1.4 Ensure inactive password lock is 30 days or less | useradd
       command: "chage --inactive {{ account_inactive }} {{ item }}"
-      with_items: "{{ list_of_os_users }}"
+      loop: "{{ list_of_os_users.split(' ') }}"
   ignore_errors: yes
   tags:
     - section5
