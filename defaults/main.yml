@@ -32,6 +32,8 @@ custom_issue_file_path: "{{ inventory_dir }}/custom_templates/issue_custom.txt"
 ## default template in files/templates/issue.net.j2 will be used)
 custom_issue_net_file_path: "{{ inventory_dir }}/custom_templates/issue_net_custom.txt"
 
+
+
 # Section 2 Settings
 ##Setting for systemd-timesyncd
 enable_systemdtimesyncd: no #If you enable this make sure to disable NTP below, only one time service must be run in the server
@@ -94,6 +96,7 @@ remove_LDAPclient: yes
 remove_RPC: yes
 
 
+
 # Section 3 Settings
 # 3.1.1 Disable IPv6
 ## General flag to enable IPv6 in grub and /etc/sysctl.conf
@@ -126,6 +129,7 @@ backlog_limit: "8192"
 space_left_action: email
 action_mail_acct: root
 grub_backlog_limit: 8192
+
 
 
 # Section 5 settings
@@ -175,6 +179,8 @@ usersAllowedToSuAccess:
   - root
 adminGroup: root
 # Section 6
+
+
 
 # Section 6 settings
 withoutOwnerFileDirOwner: root
