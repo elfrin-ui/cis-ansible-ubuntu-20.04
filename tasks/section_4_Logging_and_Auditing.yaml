@@ -504,8 +504,8 @@
     - name: 4.4 Ensure logrotate assigns appropriate permissions - /etc/logrotate.conf
       lineinfile:
         path: /etc/logrotate.conf
-        regexp: "^(\\*)screate\\s*(\\S*)\\s*(\\S*)\\s*(\\S*)"
-        line: \g<1> create 0640 \g<3> \g<4>
+        regexp: "^(\\s*)create\\s*(\\S*)\\s*(\\S*)\\s*(\\S*)"
+        line: \g<1>create 0640 \g<3> \g<4>
         backrefs: true
       notify:
         - journald restart
@@ -522,7 +522,7 @@
       lineinfile:
         path: "{{ item.path }}"
         regexp: "^(\\s*)create\\s*(\\S*)\\s*(\\S*)\\s*(\\S*)"
-        line: \g<1> create 0640 \g<3> \g<4>
+        line: \g<1>create 0640 \g<3> \g<4>
         backrefs: true
       with_items: " {{ configFiles.files }}"
       notify:

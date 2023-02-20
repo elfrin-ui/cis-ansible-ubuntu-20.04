@@ -644,7 +644,7 @@
         - bootloader_credentials.user
         - bootloader_credentials.password
 
-    - name: 1.4.2 Ensure bootloader password is set - step 4 - update grub
+    - name: 1.4.2 Ensure bootloader password is set - step 5 - update grub
       shell: update-grub
       when:
         - result.stdout == "continue"
