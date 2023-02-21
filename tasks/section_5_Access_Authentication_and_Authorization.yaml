@@ -806,6 +806,7 @@
     - 5.5.4
 # 5.5.5 Ensure default user shell timeout is 900 seconds or less
 # # Setting a timeout value reduces the window of opportunity for unauthorized user access to another user's shell session that has been left unattended. It also ends the inactive session and releases the resources associated with that session
+##original-> line: "unset TMOUT 2> /dev/null && readonly TMOUT={{ shell_timeout_sec }} ; export TMOUT"
 - name: 5.5.5 Ensure default user shell timeout is 900 seconds or less
   block:
     - name: 5.5.5 Ensure default user shell timeout is 900 seconds or less | /etc/bash.bashrc
@@ -815,20 +816,20 @@
         create: true
         regexp: "^TMOUT=|^readonly TMOUT=|^unset TMOUT"
         line: "readonly TMOUT={{ shell_timeout_sec }} ; export TMOUT"
-    - name: 5.5.5 Ensure default user shell timeout is 900 seconds or less | /etc/profile
-      lineinfile:
-        state: present
-        dest: /etc/profile
-        create: true
-        regexp: "^TMOUT=|^readonly TMOUT=|^unset TMOUT"
-        line: "readonly TMOUT={{ shell_timeout_sec }} ; export TMOUT"
-    - name: 5.5.5 Ensure default user shell timeout is 900 seconds or less | /etc/profile.d/timeout.sh
-      lineinfile:
-        state: present
-        dest: /etc/profile.d/tmout.sh
-        create: true
-        regexp: "^TMOUT=|^readonly TMOUT=|^unset TMOUT"
-        line: "readonly TMOUT={{ shell_timeout_sec }} ; export TMOUT"
+    #- name: 5.5.5 Ensure default user shell timeout is 900 seconds or less | /etc/profile
+    #  lineinfile:
+    #    state: present
+    #    dest: /etc/profile
+    #    create: true
+    #    regexp: "^TMOUT=|^readonly TMOUT=|^unset TMOUT"
+    #    line: "readonly TMOUT={{ shell_timeout_sec }} ; export TMOUT"
+    #- name: 5.5.5 Ensure default user shell timeout is 900 seconds or less | /etc/profile.d/timeout.sh
+    #  lineinfile:
+    #    state: present
+    #    dest: /etc/profile.d/tmout.sh
+    #    create: true
+    #    regexp: "^TMOUT=|^readonly TMOUT=|^unset TMOUT"
+    #    line: "readonly TMOUT={{ shell_timeout_sec }} ; export TMOUT"
   tags:
     - section5
     - level_1_server
