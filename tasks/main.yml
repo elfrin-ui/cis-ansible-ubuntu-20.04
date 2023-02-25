@@ -1,13 +1,13 @@
 ---
-- include_tasks: section_1_Initial_Setup.yaml
+- include: section_1_Initial_Setup.yaml
   become: true
-- include_tasks: section_2_Services.yaml
+- include: section_2_Services.yaml
   become: true
-- include_tasks: section_3_Network_Configuration.yaml
+- include: section_3_Network_Configuration.yaml
   become: true
-- include_tasks: section_4_Logging_and_Auditing.yaml
+- include: section_4_Logging_and_Auditing.yaml
   become: true
-- include_tasks: section_5_Access_Authentication_and_Authorization.yaml
+- include: section_5_Access_Authentication_and_Authorization.yaml
   become: true
-- include_tasks: section_6_System_Maintenance.yaml
+- include: section_6_System_Maintenance.yaml
   become: true
