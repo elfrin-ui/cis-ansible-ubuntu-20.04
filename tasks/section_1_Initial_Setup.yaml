@@ -636,7 +636,7 @@
         block: |
           #!/bin/sh
           cat <<EOF
-          set superusers='{{ bootloader_credentials.user }}'
+          set superusers="{{ bootloader_credentials.user }}"
           password_pbkdf2 {{ bootloader_credentials.user }} {{ password.stdout }}
           EOF
         state: present
