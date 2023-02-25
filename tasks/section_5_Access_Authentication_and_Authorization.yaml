@@ -220,7 +220,7 @@
         group: root
         mode: 0600
       with_items: "{{ private_keys.stdout_lines }}"
-      when: "{{ private_keys.stdout_lines|length > 0 }}"
+      when: "private_keys.stdout_lines|length > 0"
   tags:
     - section5
     - level_1_server
@@ -241,7 +241,7 @@
         group: root
         mode: "go-wx"
       with_items: "{{ public_keys.stdout_lines }}"
-      when: "{{ public_keys.stdout_lines|length > 0 }}"
+      when: "public_keys.stdout_lines|length > 0 "
   tags:
     - section5
     - level_1_server
@@ -258,7 +258,7 @@
         regexp: "^AllowUsers"
         line: "AllowUsers {{ allowed_users }}"
       when:
-        - "{{ allowed_users|length > 0 }}"
+        - "allowed_users|length > 0"
     - name: 5.3.4 Ensure SSH access is limited | allow groups
       lineinfile:
         state: present

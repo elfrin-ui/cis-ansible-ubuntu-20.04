@@ -14,12 +14,12 @@ disable_squashfs: no #Disabling squashfs will prevent the use of snap
 # 1.4.1 Ensure permissions on bootloader config are not overridden
 protect_bootloader_permissions: true
 ## 1.4.2 Ensure bootloader password is set (using grub): default is no
-set_bootloader_credentials: no
+set_bootloader_credentials: yes
 ### Update the default bootloader user and password
-bootloader_credentials: { user: "root", password: "b00tl04derPwd" }
+bootloader_credentials: { user: "root", password: "9ru8P4ssw0rd#" }
 # 1.4.4 Ensure authentication required for single user mode
 set_root_password: yes
-root_password: r00tP4ssw0rd
+root_password: r00tR4nd0m#
 ## 1.6.1.1 AppArmor
 install_apparmor: yes
 ## 1.7.1 Ensure permissions on /etc/motd are configured: allow for custom motd template (if the file doesn't exist, the
