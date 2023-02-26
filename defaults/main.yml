@@ -37,24 +37,24 @@ custom_issue_net_file_path: "{{ inventory_dir }}/custom_templates/issue_net_cust
 # Section 2 Settings
 ##Setting for systemd-timesyncd
 enable_systemdtimesyncd: no #If you enable this make sure to disable NTP below, only one time service must be run in the server
-timesync_timezone: Etc/UTC
+timesync_timezone: Asia/Jakarta
 timesync_fallback_ntp_hosts:
-  - 0.pool.ntp.org
-  - 1.pool.ntp.org
-  - 2.pool.ntp.org
-  - 3.pool.ntp.org
+  - 0.id.pool.ntp.org
+  - 1.id.pool.ntp.org
+  - 2.id.pool.ntp.org
+  - 3.id.pool.ntp.org
 
 ## Settings for NTP
 enableNTP: yes
 time_synchronization_package_name: ntp
 time_synchronization_servers:
-  - uri: "time1.google.com"
+  - uri: "0.id.pool.ntp.org"
     config: "iburst"
-  - uri: "time2.google.com"
+  - uri: "1.id.pool.ntp.org"
     config: "iburst"
-  - uri: "time3.google.com"
+  - uri: "2.id.pool.ntp.org"
     config: "iburst"
-  - uri: "time4.google.com"
+  - uri: "3.id.pool.ntp.org"
     config: "iburst"
 
 ## Settings for chrony
@@ -62,15 +62,15 @@ chronyEnable: no
 chrony_driftfile: /var/lib/chrony/chrony.drift
 chronyservers_preferred: []
 chronyservers:
-  - 0.pool.ntp.org
-  - 1.pool.ntp.org
-  - 2.pool.ntp.org
-  - 3.pool.ntp.org
+  - 0.id.pool.ntp.org
+  - 1.id.pool.ntp.org
+  - 2.id.pool.ntp.org
+  - 3.id.pool.ntp.org
 chrony_keys: /etc/chrony/chrony.keys
 chrony_log_dir: /var/log/chrony
 
 web_server_name: nginx
-remove_HTTPserver: no
+remove_HTTPserver: yes
 remove_xinetd: yes
 remove_openbsd_inetd: yes
 remove_XWindowSystem: yes
@@ -78,7 +78,7 @@ remove_AvahiServer: yes
 remove_CUPS: yes
 remove_DHCPServer: yes
 remove_LDAPserver: yes
-remove_NFS: no
+remove_NFS: yes
 remove_DNSServer: yes
 remove_FTPServer: yes
 remove_IMAPandPOP3server: yes
@@ -108,7 +108,7 @@ enable_firewall: yes
 UFWEnable: yes # Running both ufw and the services included in the iptables-persistent package may lead to conflict
 ## 3.5.1.6 Ensure firewall rules exist for all open ports | defined ports
 firewall_list_of_ports_to_allow:
-  - { rule: "allow", port: "80", proto: "tcp" }
+  #- { rule: "allow", port: "80", proto: "tcp" }
 ## 3.5.1.6 Ensure firewall rules exist for all open ports | keep_alived
 firewall_allow_keep_alive: no
 
@@ -116,9 +116,10 @@ firewall_allow_keep_alive: no
 ## Ensure rsyslog is configured to send logs to a remote log host
 remoteSyslog:
   enable: false
-  host: 192.168.2.100
+  host: 192.168.1.1
   port: 514
   protocol: tcp
+
 logrotate_policy: "daily"
 ## auditd config
 architecture: "x86_64"
@@ -134,7 +135,7 @@ grub_backlog_limit: 8192
 
 # Section 5 settings
 ## 5.1.8 Ensure cron is restricted to authorized users
-allowd_hosts: "ALL: 0.0.0.0/0.0.0.0, 192.168.2.0/255.255.255.0"
+allowd_hosts: "ALL: 0.0.0.0/0.0.0.0, 192.168.1.0/255.255.255.0"
 ## 5.2.13 Ensure only strong MAC algorithms are used
 ssh_MACs: "hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512,hmac-sha2-256"
 ## 5.2.14 Ensure only strong Key Exchange algorithms are used
@@ -158,7 +159,7 @@ pass_warn_age: 7
 pass_min_days: 1
 ## 5.4.1.1 Ensure password expiration is 365 days or less
 ##Note: More than 1 user separate by space
-list_of_os_users: ubuntu
+list_of_os_users: ubuntu root
 ## 5.4.1.4 Ensure inactive password lock is 30 days or less
 ##Note: A value of -1 would disable this setting
 account_inactive: 30
