@@ -644,8 +644,20 @@
         - result.stdout == "continue"
         - bootloader_credentials.user
         - bootloader_credentials.password
+    
+    - name: 1.4.2 Ensure bootloader password is set - step 5 - add unrestricted entry to grub
+      lineinfile:
+        path: /etc/grub.d/10_linux
+        regexp: '^(.*)class gnu-linux --class gnu --class os(.*)$'
+        line: '\1class gnu-linux --class gnu --class os --unrestricted\2'
+        backrefs: yes 
+        state: present
+      when:
+        - result.stdout == "continue"
+        - bootloader_credentials.user
+        - bootloader_credentials.password
 
-    - name: 1.4.2 Ensure bootloader password is set - step 5 - update grub
+    - name: 1.4.2 Ensure bootloader password is set - step 6 - update grub
       shell: update-grub
       when:
         - result.stdout == "continue"
