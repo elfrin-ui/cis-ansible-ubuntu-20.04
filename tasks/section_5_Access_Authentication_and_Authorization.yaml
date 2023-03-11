@@ -360,7 +360,7 @@
         state: present
         dest: /etc/ssh/sshd_config
         regexp: "^PermitRootLogin .*"
-        line: "PermitRootLogin no"
+        line: "PermitRootLogin prohibit-password"
     - name: "5.3.10 Ensure SSH root login is disabled: remove root login for all existing IPs"
       replace:
         dest: /etc/ssh/sshd_config
