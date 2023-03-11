@@ -360,7 +360,7 @@
         state: present
         dest: /etc/ssh/sshd_config
         regexp: "^PermitRootLogin .*"
-        line: "PermitRootLogin prohibit-password"
+        line: "PermitRootLogin prohibit-password" ##Change due to automation need
     - name: "5.3.10 Ensure SSH root login is disabled: remove root login for all existing IPs"
       replace:
         dest: /etc/ssh/sshd_config
@@ -839,6 +839,13 @@
 # Since the system console has special properties to handle emergency situations, it is important to ensure that the console is in a physically secure location and that unauthorized consoles have not been defined.
 - name: 5.6 Ensure root login is restricted to system console
   block:
+    - name: 5.6 Ensure root login is restricted to system console | copy file
+      copy:
+        src: /usr/share/doc/util-linux/examples/securetty
+        dest: /etc/securetty
+        owner: root
+        group: root
+        mode: '0644'
     - name: 5.6 Ensure root login is restricted to system console | check file
       stat:
         path: /etc/securetty
