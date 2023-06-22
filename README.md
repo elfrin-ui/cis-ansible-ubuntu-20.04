@@ -1,4 +1,4 @@
-#CIS-Ansible-Ubuntu-20.04
+# CIS-Ansible-Ubuntu-20.04
 =========
 
 CIS hardened Ubuntu: cyber attack and malware prevention for mission-critical systems
