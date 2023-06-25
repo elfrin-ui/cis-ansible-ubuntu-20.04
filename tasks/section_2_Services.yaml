@@ -467,8 +467,7 @@
       $ lsof -i -P -n | grep -v "(ESTABLISHED)"
         Review the output to ensure that all services listed are required on the system. If a listed
         service is not required, remove the package containing the service. If the package
-        containing a non-essential service is required, stop and mask the non-essential service.
-               
+        containing a non-essential service is required, stop and mask the non-essential service.       
   tags:
     - section2
     - level_1_server
