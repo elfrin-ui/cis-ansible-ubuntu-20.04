@@ -1014,6 +1014,7 @@
 # 1.8.4 Ensure XDCMP is not enabled
 # Edit the file /etc/gdm3/custom.conf and remove the line: 
 # Enable=true
+
 # 1.9 Ensure updates, patches, and additional security software are installed
 - name: 1.9 Ensure updates, patches, and additional security software are installed
   apt:
