@@ -185,7 +185,7 @@ adminGroup: root
 # Section 6 settings
 withoutOwnerFileDirOwner: root
 withoutGroupFilesDirGroup: root
-outputfiles: /root/CISAnsible #Output dir of some command
+outputfiles: /root/ #Output dir of some command
 disable_autofs: true
 disable_usb: true
 ## 6.1.6 Ensure permissions on /etc/shadow are configured
